@@ -1,0 +1,369 @@
+{
+	"info": {
+		"_postman_id": "d5bc3925-57b9-4d39-b9e4-f271f63137b4",
+		"name": "Chapter Dashboard API",
+		"description": "#### 1\\. `GET /api/chapters`\n\n**Description**:\n\nFetches a list of all chapters from the database. Supports **filtering**, **pagination**, and **searching** by query parameters for efficient retrieval.\n\n**Query Parameters** (optional):\n\n- `page`: Page number for pagination.\n    \n- `limit`: Number of items per page.\n    \n- `status`: Filter chapters by status.\n    \n- `search`: Search by chapter name or description.\n    \n\n**Response**:\n\nReturns a paginated list of chapters with total count, current page, and metadata.\n\n---\n\n#### 2\\. `POST /api/chapters/upload`\n\n**Description**:\n\nAllows the **admin** to upload a JSON file containing multiple chapters. The JSON should be valid and structured properly to be parsed into the database.\n\n**Request**:\n\n- `multipart/form-data` with a file field (usually named `file`).\n    \n- File content must be in **valid JSON** format.\n    \n\n**Response**:\n\n- Returns a success message along with how many chapters were added or updated.\n    \n- Handles invalid or malformed JSON with appropriate error response.\n    \n\n---\n\n#### 3\\. `GET /api/chapters/:id`\n\n**Description**:\n\nRetrieves **detailed information about a single chapter** by its unique ID.\n\n**Route Parameters**:\n\n- `id`: MongoDB ObjectId of the chapter to fetch.\n    \n\n**Response**:\n\nReturns all fields for the chapter, or a 404 if the chapter does not exist.\n\nEndFragment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40720856"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend-mathon.onrender.com/api/v1/chapter",
+					"protocol": "https",
+					"host": [
+						"backend-mathon",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chapter"
+					]
+				},
+				"description": "StartFragment\n\nFetches a list of all available subjects from the database. Useful for populating dropdowns, dashboards, or for browsing subject-specific data.\n\n---\n\n### 🔄 Functionality:\n\n- Retrieves all subject documents stored in the database.\n    \n- Optionally supports **filtering**, **searching**, **pagination**, or **caching**, if implemented.\n    \n- Invalidates cache if needed (if using Redis to cache subject data).\n    \n\n---\n\n### 🔐 **Auth**:\n\n- ❌ No authentication required (if public).\n    \n- ✅ If restricted, may require an access token or API key.\n    \n\n---\n\n### 📥 **Request Parameters**:\n\n_None by default._\n\n> &lt;p &gt;✅ Optionally, you may support:&lt;/p&gt; \n  \n\n- `?page=1&limit=10` for pagination\n    \n- `?search=Math` for keyword search\n    \n\nEndFragment"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend-mathon.onrender.com/api/v1/chapter",
+							"protocol": "https",
+							"host": [
+								"backend-mathon",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapter"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Jun 2025 23:54:32 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "339"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"5a7-huE1QKtbx/Jc/WKPwVZ4sd6uQCk\""
+						},
+						{
+							"key": "rndr-id",
+							"value": "39c0a857-0706-4422"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "94a31dba49001be1-DEL"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"total\": 5,\n    \"chapters\": [\n        {\n            \"_id\": \"683f695eec8f08cb4ed58591\",\n            \"subject\": \"Math\",\n            \"chapter\": \"Quadratic Equations\",\n            \"class\": \"10\",\n            \"unit\": \"Algebra\",\n            \"yearWiseQuestionCount\": {},\n            \"questionSolved\": 0,\n            \"status\": \"completed\",\n            \"isWeakChapter\": false,\n            \"__v\": 0,\n            \"createdAt\": \"2025-06-03T21:30:06.777Z\",\n            \"updatedAt\": \"2025-06-03T21:30:06.777Z\"\n        },\n        {\n            \"_id\": \"683f6966ec8f08cb4ed58594\",\n            \"subject\": \"Math\",\n            \"chapter\": \"Quadratic Equations\",\n            \"class\": \"10\",\n            \"unit\": \"Algebra\",\n            \"yearWiseQuestionCount\": {},\n            \"questionSolved\": 0,\n            \"status\": \"completed\",\n            \"isWeakChapter\": false,\n            \"__v\": 0,\n            \"createdAt\": \"2025-06-03T21:30:14.043Z\",\n            \"updatedAt\": \"2025-06-03T21:30:14.043Z\"\n        },\n        {\n            \"_id\": \"683f6966ec8f08cb4ed58595\",\n            \"subject\": \"Math\",\n            \"chapter\": \"Triangles\",\n            \"class\": \"10\",\n            \"unit\": \"Geometry\",\n            \"yearWiseQuestionCount\": {},\n            \"questionSolved\": 0,\n            \"status\": \"pending\",\n            \"isWeakChapter\": true,\n            \"__v\": 0,\n            \"createdAt\": \"2025-06-03T21:30:14.043Z\",\n            \"updatedAt\": \"2025-06-03T21:30:14.043Z\"\n        },\n        {\n            \"_id\": \"683f6c666cfe41cce2475150\",\n            \"subject\": \"Math\",\n            \"chapter\": \"Quadratic Equations\",\n            \"class\": \"10\",\n            \"unit\": \"Algebra\",\n            \"yearWiseQuestionCount\": {},\n            \"questionSolved\": 0,\n            \"status\": \"completed\",\n            \"isWeakChapter\": false,\n            \"__v\": 0,\n            \"createdAt\": \"2025-06-03T21:43:02.922Z\",\n            \"updatedAt\": \"2025-06-03T21:43:02.922Z\"\n        },\n        {\n            \"_id\": \"683f6c816cfe41cce2475152\",\n            \"subject\": \"Sanskrit\",\n            \"chapter\": \"Sanskrit\",\n            \"class\": \"19\",\n            \"unit\": \"Swar\",\n            \"yearWiseQuestionCount\": {},\n            \"questionSolved\": 0,\n            \"status\": \"completed\",\n            \"isWeakChapter\": false,\n            \"__v\": 0,\n            \"createdAt\": \"2025-06-03T21:43:29.106Z\",\n            \"updatedAt\": \"2025-06-03T21:43:29.106Z\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://backend-mathon.onrender.com/api/v1/chapter/683f6c816cfe41cce2475152",
+					"protocol": "https",
+					"host": [
+						"backend-mathon",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chapter",
+						"683f6c816cfe41cce2475152"
+					]
+				},
+				"description": "StartFragment\n\nFetches a specific chapter by its unique MongoDB ID.\n\n**📂 Endpoint**:\n\n```\nbashCopyEditGET /api/v1/chapters/:id\n\n ```\n\n---\n\n**🔧 URL Params**:\n\n- `:id` — The ObjectId of the chapter document in the database (required)\n    \n\n**🧪 Example**:\n\n```\nbashCopyEditGET /api/v1/chapters/665f7dc5286fce42aa1e61e1\n\n ```\n\n---\n\n**📥 Headers**:  \n_(Optional — no auth needed unless you require it)_\n\nEndFragment"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend-mathon.onrender.com/api/v1/chapter/683f6c816cfe41cce2475152",
+							"protocol": "https",
+							"host": [
+								"backend-mathon",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapter",
+								"683f6c816cfe41cce2475152"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Jun 2025 23:57:54 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "189"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"122-dk9Qhxv/y0jrUZ7WQh7hpk9tDwQ\""
+						},
+						{
+							"key": "rndr-id",
+							"value": "57663d0c-4c2b-4259"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "94a322a51db659ae-DEL"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"chapter\": {\n        \"_id\": \"683f6c816cfe41cce2475152\",\n        \"subject\": \"Sanskrit\",\n        \"chapter\": \"Sanskrit\",\n        \"class\": \"19\",\n        \"unit\": \"Swar\",\n        \"yearWiseQuestionCount\": {},\n        \"questionSolved\": 0,\n        \"status\": \"completed\",\n        \"isWeakChapter\": false,\n        \"__v\": 0,\n        \"createdAt\": \"2025-06-03T21:43:29.106Z\",\n        \"updatedAt\": \"2025-06-03T21:43:29.106Z\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "kavya",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n    \"subject\": \"Mathematics\",\r\n    \"chapter\": \"Real Numbers\",\r\n    \"class\": \"10\",\r\n    \"unit\": \"1\",\r\n    \"yearWiseQuestionCount\": {\r\n      \"2022\": 10,\r\n      \"2023\": 15\r\n    },\r\n    \"questionSolved\": 12,\r\n    \"status\": \"In Progress\",\r\n    \"isWeakChapter\": true\r\n  },\r\n  {\r\n    \"subject\": \"Science\",\r\n    \"chapter\": \"Acids, Bases and Salts\",\r\n    \"class\": \"10\",\r\n    \"unit\": \"2\",\r\n    \"yearWiseQuestionCount\": {\r\n      \"2021\": 5\r\n    },\r\n    \"questionSolved\": 3,\r\n    \"status\": \"Not Started\",\r\n    \"isWeakChapter\": false\r\n  },\r\n  {\r\n    \"subject\": \"English\",\r\n    \"chapter\": \"The Fun They Had\",\r\n    \"class\": \"9\",\r\n    \"unit\": \"1\",\r\n    \"yearWiseQuestionCount\": {\r\n      \"2020\": 2,\r\n      \"2023\": 1\r\n    },\r\n    \"questionSolved\": 1,\r\n    \"status\": \"Completed\",\r\n    \"isWeakChapter\": false\r\n  }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://backend-mathon.onrender.com/api/v1/chapter/upload",
+					"protocol": "https",
+					"host": [
+						"backend-mathon",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chapter",
+						"upload"
+					]
+				},
+				"description": "StartFragment\n\n**📌 Description**:  \n  \nUploads multiple chapters by accepting an array of chapter objects in JSON format. Only accessible to authenticated admin users via `x-api-key` header.\n\n**📂 Endpoint**:\n\n```\nbashCopyEditPOST /api/v1/chapters\n\n ```\n\n---\n\n**🔧 Headers**:\n\n| Key | Value | Description | Required |\n| --- | --- | --- | --- |\n| `Content-Type` | `application/json` | Specify JSON payload | Yes |\n| `x-api-key` | `your-admin-api-key` | Admin authentication API key | Yes |\n\n---\n\n**📤 Sample Request Body** (JSON array):\n\n```\njsonCopyEdit[\n  {\n    \"subject\": \"Math\",\n    \"chapter\": \"Quadratic Equations\",\n    \"class\": \"10\",\n    \"unit\": \"Algebra\",\n    \"yearWiseQuestionCount\": {\n      \"2022\": 4,\n      \"2023\": 5\n    },\n    \"questionSolved\": 3,\n    \"status\": \"Not Started\",\n    \"isWeakChapter\": false\n  },\n  {\n    \"subject\": \"Science\",\n    \"chapter\": \"Newton's Laws\",\n    \"class\": \"10\",\n    \"unit\": \"Physics\",\n    \"yearWiseQuestionCount\": {\n      \"2023\": 6\n    },\n    \"questionSolved\": 0,\n    \"status\": \"Not Started\",\n    \"isWeakChapter\": true\n  }\n]\n\n ```\n\n---\n\n**✅ Sample Success Response**:\n\n```\njsonCopyEdit{\n  \"message\": \"Chapters uploaded successfully\",\n  \"added\": 2,\n  \"failed\": []\n}\n\n ```\n\nEndFragment"
+			},
+			"response": [
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "kavya",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"subject\": \"Mathematics\",\r\n    \"chapter\": \"Real Numbers\",\r\n    \"class\": \"10\",\r\n    \"unit\": \"1\",\r\n    \"yearWiseQuestionCount\": {\r\n      \"2022\": 10,\r\n      \"2023\": 15\r\n    },\r\n    \"questionSolved\": 12,\r\n    \"status\": \"In Progress\",\r\n    \"isWeakChapter\": true\r\n  },\r\n  {\r\n    \"subject\": \"Science\",\r\n    \"chapter\": \"Acids, Bases and Salts\",\r\n    \"class\": \"10\",\r\n    \"unit\": \"2\",\r\n    \"yearWiseQuestionCount\": {\r\n      \"2021\": 5\r\n    },\r\n    \"questionSolved\": 3,\r\n    \"status\": \"Not Started\",\r\n    \"isWeakChapter\": false\r\n  },\r\n  {\r\n    \"subject\": \"English\",\r\n    \"chapter\": \"The Fun They Had\",\r\n    \"class\": \"9\",\r\n    \"unit\": \"1\",\r\n    \"yearWiseQuestionCount\": {\r\n      \"2020\": 2,\r\n      \"2023\": 1\r\n    },\r\n    \"questionSolved\": 1,\r\n    \"status\": \"Completed\",\r\n    \"isWeakChapter\": false\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://backend-mathon.onrender.com/api/v1/chapter/upload",
+							"protocol": "https",
+							"host": [
+								"backend-mathon",
+								"onrender",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"chapter",
+								"upload"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Wed, 04 Jun 2025 00:15:57 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "64"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "etag",
+							"value": "W/\"42-KGpeMa/XIxb+C1kq4UtKKU0ZzBo\""
+						},
+						{
+							"key": "rndr-id",
+							"value": "a663a6d3-2fbe-4091"
+						},
+						{
+							"key": "vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "x-powered-by",
+							"value": "Express"
+						},
+						{
+							"key": "x-render-origin-server",
+							"value": "Render"
+						},
+						{
+							"key": "cf-cache-status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "94a33d17d9f7898b-DEL"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Chapters uploaded successfully\",\n    \"added\": 3,\n    \"failed\": []\n}"
+				}
+			]
+		}
+	]
+}
